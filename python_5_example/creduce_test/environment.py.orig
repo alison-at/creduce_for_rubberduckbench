@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http:
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -537,7 +537,7 @@ def get_ubsan_options():
 
       # We use -fsanitize=unsigned-integer-overflow as an additional coverage
       # signal and do not want those errors to be reported by UBSan as bugs.
-      # See https:
+      # See https://github.com/google/oss-fuzz/issues/910 for additional info.
       'silence_unsigned_overflow': 1,
       'symbolize': 1,
   }
@@ -909,7 +909,7 @@ def set_bot_environment():
     os.environ['BOT_TMPDIR'] = os.path.join(bot_dir, 'tmp')
 
   # Add common environment variables needed by Bazel test runner.
-  # See https:
+  # See https://docs.bazel.build/versions/master/test-encyclopedia.html.
   os.environ['TEST_TMPDIR'] = get_value('BOT_TMPDIR')
   os.environ['TZ'] = 'UTC'
 

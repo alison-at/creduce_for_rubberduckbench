@@ -12,32 +12,20 @@ site_packages = next(p for p in sys.path if "site-packages" in p)
 
 sys.path.insert(0, os.path.join(site_packages, "python"))
 
-'''
-sys.path.insert(0, "/python")
-sys.path.insert(0, "/python/system")
-sys.path.insert(0, "/appengine/python")
-sys.path.insert(0, "/appengine/python/system")
-'''
-filename = "corpus_pruning_task.py"
-'''
-#this is to patch an error with python3.7 to python 3.13, python3.13 moved interable and collections
-import collections
-import collections.abc
 
-collections.Iterable = collections.abc.Iterable
-
-import collections
-import collections.abc
-
-collections.Mapping = collections.abc.Mapping
-collections.Iterable = collections.abc.Iterable
-'''
+filename = os.path.join(os.getcwd(), "corpus_pruning_task.py")
 
 #import corpus pruning file as module
 spec = importlib.util.spec_from_file_location("mod", filename)
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
-
+print("CWD:", os.getcwd())
+print("FILES:", os.listdir("."))
+with open(mod.__file__, "r") as f:
+    for i, line in enumerate(f):
+        print(line.rstrip())
+        if i > 200:   # limit output
+            break
 from system import environment
 
 #had to add ROOT_DIR=None
@@ -74,8 +62,9 @@ ctx = DummyContext()
 os.environ['BUILD_DIR'] = os.getcwd()
 os.environ['OS_OVERRIDE'] = "fuchsia"
 #sys.platform = 'FUCHSIA'#set for engine_common.find_fuzzer_path predictable result
-
+print("attributes:", dir(mod))
 if not hasattr(mod, "do_corpus_pruning"):
+    print("no corpus pruning method")
     sys.exit(1)
 
 ctx = DummyContext()

@@ -14,33 +14,9 @@ sys.path.insert(0, os.path.join(site_packages, "python"))
 
 import system
 #print("\nsystem file is: " + system.__file__)
-'''
-sys.path.insert(0, "/python")
-sys.path.insert(0, "/python/system")
-sys.path.insert(0, "/appengine/python")
-sys.path.insert(0, "/appengine/python/system")
-'''
+
 filename = "corpus_pruning_task.py"
-'''
-#this is to patch an error with python3.7 to python 3.13, python3.13 moved interable and collections
-import collections
-import collections.abc
 
-collections.Iterable = collections.abc.Iterable
-
-import collections
-import collections.abc
-
-collections.Mapping = collections.abc.Mapping
-collections.Iterable = collections.abc.Iterable
-'''
-'''
-spec_env = importlib.util.spec_from_file_location("environment", "environment.py")
-envmod = importlib.util.module_from_spec(spec_env)
-spec_env.loader.exec_module(envmod)
-
-sys.modules["environment"] = envmod
-'''
 
 spec_env = importlib.util.spec_from_file_location(
     "system.environment", "environment.py"
@@ -49,8 +25,6 @@ envmod = importlib.util.module_from_spec(spec_env)
 spec_env.loader.exec_module(envmod)
 
 sys.modules["system.environment"] = envmod
-
-system.environment = envmod
 
 #import corpus pruning file as module
 spec = importlib.util.spec_from_file_location("mod", filename)

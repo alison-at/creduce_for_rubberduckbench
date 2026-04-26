@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http:
+#      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -47,7 +47,7 @@ from system import shell
 CORPUS_INPUT_SIZE_LIMIT = 5 * 1024 * 1024
 
 # Number of testcases to use for the corpus subset strategy.
-# See https:
+# See https://crbug.com/682311 for more information.
 # Size 100 has a slightly higher chance as it seems to be the best one so far.
 CORPUS_SUBSET_NUM_TESTCASES = [10, 20, 50, 75, 75, 100, 100, 100, 125, 125, 150]
 
@@ -373,7 +373,7 @@ def get_issue_owners(fuzz_target_path):
   """Return list of owner emails given a fuzz target path.
 
   Format of an owners file is described at:
-  https:
+  https://cs.chromium.org/chromium/src/third_party/depot_tools/owners.py
   """
   owners_file_path = fuzzer_utils.get_supporting_file(fuzz_target_path,
                                                       OWNERS_FILE_EXTENSION)
