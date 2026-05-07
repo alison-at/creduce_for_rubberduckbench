@@ -37,6 +37,19 @@ By replacing imported modules with the actual code files and passing these files
 __Skipping Creduce Passes__
 
 Creduce reduces as much as possible and also performs lexical reduction to remove all scripts and variables names. The option `--remove-pass <pass name>` is the best way to avoid specific overly stringent passes. Running creduce should look like:
-`creduce <test file> <file1 file2 ... fileN> <--remove-pass <pass name>> `.
+`creduce <test file> <file1 file2 ... fileN> <--remove-pass <pass name 1> <pass flag 1> --remove-pass <pass name 2> <pass flag 2> `. 
+
+For example I might run 
+    creduce --remove-pass pass_clex rename-toks \
+       --remove-pass pass_clang rename-var   \
+       --remove-pass pass_clang rename-class   \
+       --remove-pass pass_clang rename-param   \
+       --remove-pass pass_clang rename-fun   \
+       --remove-pass pass_clex delete-string   \
+       ./reduce_corpus_env_eng.sh  \
+        ../code_to_reduce/environment.py \
+        ../code_to_reduce/corpus_pruning_task.py \
+        ../code_to_reduce/engine_common.py" 
+ to remove many passes for files I wanted less simplified. 
 
 Occasionally, for certain files I have to run ` --remove-pass pass_line_markers` to get creduce to run properly.
