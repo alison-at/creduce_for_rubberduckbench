@@ -1,6 +1,6 @@
 ___Creduce for RubberDuckBench: Proof Of Concept
 
-This repository preserves the inital attempt to use [Creduce] (https://github.com/csmith-project/creduce) to reduce codebases down to code relevant to [RubberDuckBench] (https://github.com/elizabethdinella/RubberDuckBench) Code Understanding questions. 
+This repository preserves the inital attempt to use [Creduce](https://github.com/csmith-project/creduce) to reduce codebases down to code relevant to [RubberDuckBench](https://github.com/elizabethdinella/RubberDuckBench) Code Understanding questions. 
 
 The initial RubberDuckBench codebase used for the proof-of-concept is [RubberDuckBench Python 5] (https://github.com/elizabethdinella/RubberDuckBench/blob/main/dataset/py/questions/5.txt).
 
