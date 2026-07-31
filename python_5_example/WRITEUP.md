@@ -3,7 +3,7 @@ This repository contains the python wheel, the code files, and the creduce bash 
 
 __Creduce Script Structure__
 
-RubberDuckBench Python 5 relies on tracking the dataflow of the `build_directory` variable. 
+[RubberDuckBench Python 5] (https://github.com/elizabethdinella/RubberDuckBench/blob/main/dataset/py/questions/5.txt) relies on tracking the dataflow of the `build_directory` variable. 
 
 In order to run Creduce, corpus_pruning_task.py must be runnable. In order for corpus_pruning_task.py to be runnable, its imports must be resolvable. There are three options to resolve imports.
 1. Comment out the imports
